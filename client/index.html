@@ -2,17 +2,38 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <h1>Keepily</h1>
-    <script src="src/adapter.js" charset="utf-8"></script>
-    <script src="src/note.js" charset="utf-8"></script>
-    <script src="src/index.js" charset="utf-8"></script>
-    <script src="src/app.js" charset="utf-8"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./src/adapter.js"> </script>
+    <script src="./src/app.js"> </script>
+    <script src="./src/note.js"> </script>
+    <script src="./src/index.js"> </script>
 
+    <!-- This file removes margin from browser containers -->
+    <link rel="stylesheet" href="./normalize.css" >
 
+    <!-- Stylesheet -->
+    <link href="https://fonts.googleapis.com/css?family=Sarabun:200i,400,700" rel="stylesheet">
+    <link rel="stylesheet" href="./application.css" >
   </head>
+
+
+
   <body>
-    <ul id='notes-list'></ul>
-    <div id='update'></div>
-    <div id='new-note'></div>
+    <div class="nav">
+      <div class="logo-wrapper">
+        <img src="./images/Keepily_logo.png" alt="Keepily logo"/>
+      </div>
+    </div>
+    <div class="container">
+      <div class="add-button-wrapper"></div>
+      <hr>
+      <ul  id='notes-list'></ul>
+      <div id='update'></div>
+      <div id='new-note'></div>
+    </div>
+    <div class="footer">
+      <p>MADE BY HOLLY</p>
+    </div>
   </body>
+
 </html>

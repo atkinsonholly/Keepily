@@ -1,7 +1,7 @@
 class Api::V1::NotesController < ApplicationController
   before_action :find_note, only: [:update, :show, :destroy]
   def index
-    @notes = Note.all
+    @notes = Note.order(:id).reverse
     render json: @notes
   end
 

@@ -1,0 +1,246 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background: url("./images/paper.jpg") no-repeat center center;
+  background-size: cover;
+  font-family: 'Sarabun', sans-serif;
+  padding-top: 120px;
+  position: relative;
+  background-attachment: fixed;
+}
+
+.footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: #636060;
+  text-align: center;
+  font-size: 0.75em;
+}
+
+.buttons-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.go-back {
+  width: 50px;
+  height: 30px;
+  position: relative;
+}
+
+.go-back img {
+  height: 100%;
+  transition: .2s;
+  pointer-events: none;
+}
+
+.go-back:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.delete-button,
+.edit-button {
+  outline: none;
+  background: none;
+  border: none;
+  transition: .2s;
+}
+
+.delete-button img,
+.edit-button img {
+  width: 25px;
+  pointer-events: none;
+}
+
+.delete-button:hover,
+.edit-button:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}
+
+.nav {
+  background-color: #fff;
+  padding: 10px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+.nav .logo-wrapper {
+  height: 100px;
+  width: 200px;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+.nav .logo-wrapper img {
+  height: 190%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%)
+}
+
+.container {
+  max-width: 700px;
+  background: #fff;
+  margin: 20px auto 0;
+  width: 90%;
+  border-top: 10px solid #e4a4a8;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  color: #636060;
+}
+
+.container .add-button-wrapper {
+  padding: 10px 15px;
+  text-align: right;
+}
+
+.container .add-button-wrapper button {
+  border: none;
+  background-color: #e4a4a8;
+  border-radius: 50%;
+  height: 50px;
+  width: 50px;
+  color: #fff;
+  font-size: 2.5em;
+  position: relative;
+  outline: none;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.container .add-button-wrapper button:hover {
+  background-color: #ecbfc1;
+}
+
+.container .add-button-wrapper button span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -62%);
+  pointer-events: none;
+}
+
+.container hr {
+  border: none;
+  border-top: 3px solid #eee;
+  width: 90%;
+  margin: 0 auto;
+}
+
+#notes-list {
+  list-style: none;
+  padding: 20px;
+  margin: 0;
+}
+
+#notes-list li {
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+#notes-list li h3 {
+  margin: 0;
+}
+
+.note-title:hover {
+  cursor: pointer;
+}
+
+.form-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+}
+
+@keyframes popUp {
+  0% {
+    height: 0;
+    width: 0;
+    border-radius: 50%;
+  }
+  100% {
+    height: 90%;
+    width: 90%;
+    border-radius: 0px;
+  }
+}
+
+.form-wrapper form {
+  max-width: 600px;
+  max-height: 500px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  overflow: hidden;
+  top: 50%;
+  left: 50%;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  border-top: 10px solid #e4a4a8;
+  background-color: #fff;
+  transform: translate(-50%, -50%);
+  animation: popUp .2s forwards;
+  animation-timing-function: ease-in;
+}
+
+.form-wrapper form input {
+  border: none;
+  border-bottom: 3px solid #e4a4a8;
+  width: 80%;
+  padding: 5px 0;
+  margin-bottom: 2em;
+}
+
+.form-wrapper form label {
+  margin-bottom: 1em;
+}
+
+.form-wrapper form textarea {
+  border: 3px solid #e4a4a8;
+  border-radius: 4px;
+  width: 80%;
+  padding: 1em;
+  margin-bottom: 2em;
+  resize: none;
+}
+
+.form-nav-buttons {
+  display: flex;
+  width: 200px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.form-nav-buttons .save {
+  width: 130px;
+  padding: 0px 20px;
+  border: none;
+  background-color: #e4a4a8;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 1.3em;
+  line-height: 40px;
+}
+
+.form-nav-buttons .save:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+}

@@ -8,14 +8,14 @@ class App {
     this.createNotes = this.createNotes.bind(this);
     this.addNotes = this.addNotes.bind(this);
     this.reloadList = this.reloadList.bind(this);
-    this.addGoBackListener = this.addGoBackListener.bind(this);
+    //this.addGoBackListener = this.addGoBackListener.bind(this);
     this.clearNotesList = this.clearNotesList.bind(this);
     this.clearNewNoteForm = this.clearNewNoteForm.bind(this);
     this.clearUpdateForm = this.clearUpdateForm.bind(this);
   }
 
   attachEventListeners() {
-    document.querySelector('#notes-list').addEventListener('click', this.handleButtonClick);
+    document.querySelector('body').addEventListener('click', this.handleButtonClick);
     document.querySelector('#update').addEventListener('submit', this.handleFormSubmit);
     document.querySelector('#new-note').addEventListener('submit', this.handleNewFormSubmit);
   }
@@ -25,12 +25,13 @@ class App {
     array.map(note => {
       new Note(note);
     });
+    console.log(Note.all)
     this.addNotes(array);
   }
 
   addNotes(array) {
     this.clearAll()
-    document.querySelector('#notes-list').innerHTML += this.showAddButton();
+    document.querySelector('.add-button-wrapper').innerHTML = this.showAddButton();
     Note.all.forEach(
       note => (document.querySelector('#notes-list').innerHTML += note.renderListItem())
     )
@@ -38,9 +39,7 @@ class App {
 
   showAddButton() {
     return `
-    <div>
-      <button class=add-button >Add a new note</button>
-    </div>
+      <button class="add-button" ><span>+</span></button>
     `;
   }
 
@@ -76,17 +75,15 @@ class App {
     .then(this.createNotes)
   }
 
-  addGoBackListener(){
-    document.querySelector('#go-back').addEventListener('click', () => this.addNotes(Note.all))
-  }
-
   handleButtonClick(e) {
     const id = parseInt(e.target.dataset.id);
     const note = Note.findById(id);
     if (e.target.className === "edit-button") {
         document.querySelector('#update').innerHTML = note.renderUpdateForm();
-        this.addGoBackListener()
-        this.clearNotesList()
+    }
+
+    if (e.target.classList.contains("go-back")) {
+        this.addNotes(Note.all)
     }
     if (e.target.className === "delete-button") {
       //add alert to confirm deletion
@@ -95,13 +92,10 @@ class App {
     }
     if (e.target.className === "note-title") {
       document.querySelector('#notes-list').innerHTML = note.showContent(note);
-      this.addGoBackListener()
     }
     if (e.target.className === "add-button") {
       if (document.querySelector('#new-note').innerHTML === ``) {
         document.querySelector('#new-note').innerHTML = Note.renderNewForm();
-        this.addGoBackListener()
-        this.clearNotesList()
         this.clearUpdateForm()
       }
     }

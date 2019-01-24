@@ -13,24 +13,38 @@ class Note {
 
   showContent(note){
     return `
-    <h2 class=note-header > ${this.title} </h2>
-    <h3 class=note-content > ${this.content} </h3>
-    <a id=go-back > Go back to all notes</a>
+    <div class="buttons-nav">
+      <div class="go-back" >
+        <img src="./images/left-arrow.svg" alt="back to all notes"/>
+      </div>
+      <div class="buttons-wrapper">
+        <button class="edit-button" data-id=${this.id}>
+        <img src="./images/edit.svg" alt="edit note"/>
+        </button>
+        <button class="delete-button" data-id=${this.id}>
+        <img src="./images/garbage.svg" alt="delete note"/>
+        </button>
+      </div>
+    </div>
+    <h2 class="note-header" > ${this.title} </h2>
+    <p class="note-content" > ${this.content} </p>
     `
   }
 
   renderListItem() {
     return `
-    <div>
-      <ul>
-        <li>
-          <h3 class=note-title data-id=${this.id}>${this.title}
-            <button class=edit-button data-id=${this.id}>Edit</button>
-            <button class=delete-button data-id=${this.id}>Delete</button>
-          </h3>
-        </li>
-      </ul>
-    </div>
+    <li>
+      <h3 class="note-title" "active" data-id=${this.id}>${this.title}
+      </h3>
+      <div class="buttons-wrapper">
+        <button class="edit-button" data-id=${this.id}>
+        <img src="./images/edit.svg" alt="edit note"/>
+        </button>
+        <button class="delete-button" data-id=${this.id}>
+        <img src="./images/garbage.svg" alt="delete note"/>
+        </button>
+      </div>
+    </li>
     `
   }
 
@@ -39,36 +53,39 @@ class Note {
   }
   renderUpdateForm() {
     return `
-    <form data-id=${this.id}>
-      <label>Title</label>
-      <p>
+    <div class="form-wrapper">
+      <form data-id=${this.id}>
+        <label>Title</label>
         <input type="text" value="${this.title}" />
-      </p>
-      <label>Content</label>
-      <p>
-        <textarea>${this.content}</textarea>
-      </p>
-      <button class=save type='submit'>Save Changes</button>
-
-      <a id=go-back data-id=${this.id}> Go back to all notes</a>
-    </form>
+        <label>Content</label>
+        <textarea rows="7" cols="40">${this.content}</textarea>
+        <div class="form-nav-buttons">
+          <button class="save" type='submit'>Save</button>
+          <div class="go-back" >
+            <img src="./images/left-arrow.svg" alt="back to all notes"/>
+          </div>
+        </div>
+      </form>
+    </div>
   `;
   }
 
   static renderNewForm() {
     return `
-    <form >
-      <label>Title</label>
-      <p>
+    <div class="form-wrapper">
+      <form >
+        <label>Title</label>
         <input type="text" value="" />
-      </p>
-      <label>Content</label>
-      <p>
-        <textarea></textarea>
-      </p>
-      <button class=save type='submit'>Save Note</button>
-      <a id=go-back > Go back to all notes</a>
-    </form>
+        <label>Content</label>
+        <textarea rows="7" cols="40"></textarea>
+        <div class="form-nav-buttons">
+          <button class="save" type='submit'>Save</button>
+          <div class="go-back" >
+            <img src="./images/left-arrow.svg" alt="back to all notes"/>
+          </div>
+        </div>
+      </form>
+    </div>
   `;
   }
 }
