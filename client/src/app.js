@@ -12,6 +12,7 @@ class App {
     this.clearNotesList = this.clearNotesList.bind(this);
     this.clearNewNoteForm = this.clearNewNoteForm.bind(this);
     this.clearUpdateForm = this.clearUpdateForm.bind(this);
+    this.showErrors = this.showErrors.bind(this);
   }
 
   attachEventListeners() {
@@ -50,8 +51,16 @@ class App {
     const title = e.target.querySelector('input').value;
     const content = e.target.querySelector('textarea').value;
     const bodyJSON = { title, content };
+    if (title === "Title can't be blank") {
+      return this.showErrors(title)
+    }
     this.adapter.updateNote(note.id, bodyJSON).then(updatedNote => {
+      if  (Object.keys(updatedNote)[0] === "errors") {
+        const errors = updatedNote.errors;
+        return this.showErrors(errors[0])
+      }
       const note = Note.findById(updatedNote.id);
+      console.log(updatedNote)
       note.update(updatedNote);
       this.addNotes(Note.all)
     })
@@ -59,12 +68,25 @@ class App {
 
   handleNewFormSubmit(e) {
     e.preventDefault();
-    this.clearNewNoteForm()
     const title = e.target.querySelector('input').value;
     const content = e.target.querySelector('textarea').value;
     const bodyJSON = { title, content };
+    if (title === "Title can't be blank") {
+      return this.showErrors(title)
+    }
     this.adapter.newNote(bodyJSON)
-    .then(this.reloadList)
+    .then(data => {
+      if (data === undefined) {
+        this.reloadList()
+      }
+      else {
+        this.showErrors(data)
+      }
+    })
+  }
+
+  showErrors(data) {
+    document.querySelector("input").value = data
   }
 
   reloadList(){

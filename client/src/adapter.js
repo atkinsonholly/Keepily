@@ -12,7 +12,7 @@ class Adapter {
   }
 
   updateNote(id, body) {
-    return this.patch(`${this.baseUrl}/notes/${id}`, body);
+    return this.patch(`${this.baseUrl}/notes/${id}`, body)
   }
 
   get(url) {
@@ -24,7 +24,14 @@ class Adapter {
   }
 
   newNote(body) {
-    return this.post(`${this.baseUrl}/notes/`, body);
+    return this.post(`${this.baseUrl}/notes/`, body).then(data => this.getErrors(data));
+  }
+
+  getErrors(data) {
+    if (Object.keys(data)[0] === "errors") {
+      const errors = data.errors;
+      return document.querySelector("input").value = errors[0];
+    }
   }
 
   patch(url, body) {

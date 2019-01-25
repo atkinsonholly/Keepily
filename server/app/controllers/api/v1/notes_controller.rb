@@ -10,9 +10,14 @@ class Api::V1::NotesController < ApplicationController
   end
 
   def create
-    @note = Note.create(note_params)
-    @note.save
-    render json: @note, status: 201
+    @note = Note.new(note_params)
+    if @note.valid?
+      @note.save
+        render json: @note, status: 201
+    else
+      render json: { errors: @note.errors.full_messages }, status: 202
+    end
+
   end
 
   def update
