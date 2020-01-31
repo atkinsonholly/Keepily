@@ -1,8 +1,6 @@
-<a href="https://github.com/atkinsonholly/Keepily"><img src="https://github.com/atkinsonholly/Keepily/blob/master/client/images/Keepily_note_list.png" title="ModuleThreeProject" alt="Module Three Project"></a>
+<a href="https://github.com/atkinsonholly/Keepily"><img src="https://github.com/atkinsonholly/Keepily/blob/master/client/images/Keepily_note_list.png" title="Keepily" alt="Keepily"></a>
 
-# Flatiron School - Module Three Project
-
-**Keepily**
+# Keepily
 
 - Make notes and stores them with Keepily! Edit and delete your notes as needed!
 - Keepily is intended to simulate the basic functionality of Evernote. It uses Ruby on Rails for the backend, and JavaScript for the frontend. 
